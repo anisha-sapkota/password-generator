@@ -1,3 +1,35 @@
+// function for getting random lowercase character
+function getRandomLowercase() {
+  // all lowercase characters
+  var lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
+  // return lowercase character at random index between 0 and 25
+  return lowercaseCharacters.charAt(Math.floor(Math.random() * 25));
+}
+
+// function for getting random uppercase character
+function getRandomUppercase() {
+  // all uppercase characters
+  var uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // return uppercase character at random index between 0 and 25
+  return uppercaseCharacters.charAt(Math.floor(Math.random() * 25));
+}
+
+// function for getting random number
+function getRandomNumber() {
+  // return random number between 0 and 9
+  return Math.floor(Math.random() * 9);
+}
+
+// function for getting random special character
+function getRandomSpecial() {
+  // special characters to choose from
+  var specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  // return random character from specialChars string
+  return specialChars.charAt(
+    Math.floor(Math.random() * (specialChars.length - 1))
+  );
+}
+
 // Function for validating length input
 function validateLength(input) {
   // Check if input is not a number
@@ -34,7 +66,10 @@ function generatePassword() {
   var incNumbers = window.confirm("Include numbers?");
   var incSpecialChars = window.confirm("Include special characters?");
 
-  if (incLowercase || incUppercase || incNumbers || incSpecialChars) {
+  var optionsSelected =
+    incLowercase + incUppercase + incNumbers + incSpecialChars;
+
+  if (optionsSelected) {
     return "password";
   } else {
     window.alert("At least one character type should be selected!");
