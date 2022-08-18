@@ -3,7 +3,9 @@ function getRandomLowercase() {
   // all lowercase characters
   var lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
   // return lowercase character at random index between 0 and 25
-  return lowercaseCharacters.charAt(Math.floor(Math.random() * 25));
+  return lowercaseCharacters.charAt(
+    Math.floor(Math.random() * lowercaseCharacters.length)
+  );
 }
 
 // function for getting random uppercase character
@@ -11,13 +13,15 @@ function getRandomUppercase() {
   // all uppercase characters
   var uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   // return uppercase character at random index between 0 and 25
-  return uppercaseCharacters.charAt(Math.floor(Math.random() * 25));
+  return uppercaseCharacters.charAt(
+    Math.floor(Math.random() * uppercaseCharacters.length)
+  );
 }
 
 // function for getting random number
 function getRandomNumber() {
   // return random number between 0 and 9
-  return Math.floor(Math.random() * 9);
+  return Math.floor(Math.random() * 10);
 }
 
 // function for getting random special character
@@ -25,9 +29,7 @@ function getRandomSpecial() {
   // special characters to choose from
   var specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
   // return random character from specialChars string
-  return specialChars.charAt(
-    Math.floor(Math.random() * (specialChars.length - 1))
-  );
+  return specialChars.charAt(Math.floor(Math.random() * specialChars.length));
 }
 
 // Function for validating length input
