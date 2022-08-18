@@ -56,22 +56,56 @@ function validateLength(input) {
 
 // function for generating password``
 function generatePassword() {
+  // prompt user for length and store it in variable
   var lengthInput = window.prompt(
     "Please enter password length (between 8 and 128 character)"
   );
+
+  // validate length by calling validateLength function
   var length = validateLength(lengthInput);
 
+  // capture user choices and store in variables
   var incLowercase = window.confirm("Include lowercase characters?");
   var incUppercase = window.confirm("Include uppercase characters?");
   var incNumbers = window.confirm("Include numbers?");
   var incSpecialChars = window.confirm("Include special characters?");
 
+  //  get number of choices selected
   var optionsSelected =
     incLowercase + incUppercase + incNumbers + incSpecialChars;
 
+  // check if at least one choice was selected
   if (optionsSelected) {
-    return "password";
+    // declare empty password variable
+    var password = "";
+
+    // loop until password length is met
+    for (var i = 0; i < length; i++) {
+      // if user chose lowercase, append random lowercase character
+      if (incLowercase) {
+        password += getRandomLowercase();
+      }
+      // if user chose uppercase, append random uppercase character
+      if (incUppercase) {
+        password += getRandomUppercase();
+      }
+      // if user chose number, append random number
+      if (incNumbers) {
+        password += getRandomNumber();
+      }
+      // if user chose special character, append random special character
+      if (incSpecialChars) {
+        password += getRandomSpecial();
+      }
+    }
+    // for every user choice we added character of the choice
+    // which resulted in password length being length * optionSelected
+    // slice the password to correct length
+    password = password.slice(0, password.length / optionsSelected);
+    // return password
+    return password;
   } else {
+    // no choice was selected, prompt and call generatePassword function
     window.alert("At least one character type should be selected!");
     generatePassword();
   }
